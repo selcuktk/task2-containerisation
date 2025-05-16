@@ -4,6 +4,7 @@ from torchvision import transforms
 from src.utils.utilities import *
 import os
 import numpy as np
+from keras.models import load_model
 
 SAVE_LOCATION = os.getcwd() + "/resources/"
 
@@ -24,13 +25,11 @@ def is_preprocess(img):
         print(e)
 
 
-model = None
+model = load_model("src/pred/models/Trafic_signs_model.h5")
 
 
 def get_model():
     global model
-    if model is None:
-        model = models.alexnet(pretrained=True)
     return model
 
 
