@@ -1,6 +1,3 @@
-import torch
-from torchvision import models
-from torchvision import transforms
 from src.utils.utilities import *
 import os
 import numpy as np
