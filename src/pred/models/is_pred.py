@@ -82,7 +82,7 @@ def get_labels():
     return labels
 
 
-def is_predict(input_batch, model=None):
+def is_predict(input_batch):
     labels = get_labels()
     # Make prediction
     predictions = model.predict(input_batch)
