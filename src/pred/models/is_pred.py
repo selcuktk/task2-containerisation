@@ -25,7 +25,7 @@ def is_preprocess(img):
         print(e)
 
 
-model = load_model("src/pred/models/Trafic_signs_model.h5")
+model = load_model(os.path.join(os.path.dirname(os.path.abspath(__file__)), "Trafic_signs_model.h5"))
 
 
 def get_model():
