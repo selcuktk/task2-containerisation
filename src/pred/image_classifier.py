@@ -7,8 +7,8 @@ def internship_run_classifier(image: str) -> Any:
     if img is None:
         return None
     input_batch = is_preprocess(img)  # preprocessing image
-    predicted_class, probability = is_predict(input_batch, model=None)  # prediction
+    predicted_class, probability = is_predict(input_batch)  # prediction
     return {
         "class": predicted_class,
-        "confidence": round(probability, 4)
+        "confidence": round(float(probability), 4)
     }
