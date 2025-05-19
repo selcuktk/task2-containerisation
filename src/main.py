@@ -1,18 +1,19 @@
 import uvicorn
 import os
 import sys
-# Add the parent directory (one level above src) to sys.path
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+# Add the project root (/code) to sys.path
+sys.path.append('/code')
+
 from src.pred.image_classifier import *
 
 if __name__ == "__main__":
-
     # even though uvicorn is running on 0.0.0.0 check 127.0.0.1 from the browser
 
     if "code" in os.getcwd():
-        uvicorn.run("app:app", host="0.0.0.0", port=7001, log_level="debug",
-                    proxy_headers=True, reload=True)
+        uvicorn.run("src.app.app:app", host="0.0.0.0", port=7001, log_level="debug",
+                    proxy_headers=True, reload=True, reload_dirs=["src"])
     else:
-        # for running locally from IDE without docker
-        uvicorn.run("app.app:app", host="0.0.0.0", port=7001, log_level="debug",
-                    proxy_headers=True, reload=True)
+        # for running locally from IDE without Docker
+        uvicorn.run("src.app.app:app", host="0.0.0.0", port=7001, log_level="debug",
+                    proxy_headers=True, reload=True, reload_dirs=["src"])
